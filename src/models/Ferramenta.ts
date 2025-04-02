@@ -2,7 +2,7 @@ import { Process } from "./Process";
 import { SubProcess } from "./SubProcess";
 
 export interface Ferramenta {
-    id: number;
+    id?: number;
     nome: string;
     descricao: string;
     processoId?: number;

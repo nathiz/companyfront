@@ -71,6 +71,42 @@ const Processos: React.FC = () => {
                         <li key={processo.id}>
                             <h4>{processo.nome}</h4>
                             <p>{processo.descricao}</p>
+                            {processo.subprocessos && processo.subprocessos.length > 0 ? (
+                                <ul>
+                                    {processo.subprocessos.map((sub) => (
+                                        <li key={sub.id}>{sub.nome}</li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p>Sem subprocessos</p>
+                            )}
+                            {processo.ferramentas && processo.ferramentas.length > 0 ? (
+                                <ul>
+                                    {processo.ferramentas.map((sub) => (
+                                        <li key={sub.id}>{sub.nome}</li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p>Sem Ferramentas</p>
+                            )}
+                            {processo.responsaveis && processo.responsaveis.length > 0 ? (
+                                <ul>
+                                    {processo.responsaveis.map((sub) => (
+                                        <li key={sub.id}>{sub.nome}</li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p>Sem Responsável</p>
+                            )}
+                            {processo.documentos && processo.documentos.length > 0 ? (
+                                <ul>
+                                    {processo.documentos.map((sub) => (
+                                        <li key={sub.id}>{sub.nome}</li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p>Sem Documentos</p>
+                            )}
                         </li>
                     ))}
                 </ul>

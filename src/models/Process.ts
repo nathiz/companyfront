@@ -11,4 +11,8 @@ export interface Process {
     descricao: string;
     areaId: number;
     subprocessos?: SubProcess[];
+    ferramentas?: Ferramenta[];
+    responsaveis?: Responsavel[];
+    documentos?: Documento[];
+
 }

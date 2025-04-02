@@ -36,7 +36,7 @@ const SubProcessos: React.FC = () => {
     const subprocessosFiltrados =
         selectedProcess === "all"
             ? subprocessos
-            : subprocessos.filter((subprocesso) => subprocesso.processId === selectedProcess);
+            : subprocessos.filter((subprocesso) => subprocesso.processoId === selectedProcess);
 
     return (
         <div>

@@ -25,11 +25,12 @@ export const getSubProcessById = async (id: number): Promise<SubProcess> => {
 
 export const createSubProcess = async (subProcess: SubProcess): Promise<SubProcess> => {
     try {
+        console.log("Enviando dados para a API:", subProcess);
         const response = await axios.post(API_URL, subProcess);
         return response.data;
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            console.error("Erro ao criar subprocesso:", error.response?.data);
+            console.error("Erro ao criar subprocesso:", error.response?.data || error);
             
             // Exibir detalhes dos erros de validação
             if (error.response?.data?.errors) {

@@ -6,7 +6,7 @@ import { Responsavel } from "./Responsavel";
 export interface SubProcess {
     id?: number; // Torna o id opcional
     nome: string;
-    processId: number;
+    processoId: number;
     processo?: Process;
     subprocessosFilhos?: SubProcess[];
     ferramentas?: Ferramenta[];

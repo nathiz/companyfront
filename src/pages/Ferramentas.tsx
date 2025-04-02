@@ -1,52 +1,59 @@
 import React, { useEffect, useState } from "react";
-import { Ferramenta } from "../models/Ferramenta";  // Importa o modelo de dados Ferramenta
-import { getAllFerramentas } from "services/FerramentaService"; // Função para buscar as ferramentas
+import { useNavigate } from "react-router-dom"; // Importa useNavigate para navegação
+import { Ferramenta } from "../models/Ferramenta";  
+import { getAllFerramentas } from "../services/FerramentaService"; 
 
 const Ferramentas: React.FC = () => {
-    const [ferramentas, setFerramentas] = useState<Ferramenta[]>([]);  // Inicializa com um array vazio
-    const [loading, setLoading] = useState<boolean>(true);  // Estado de carregamento
-    const [error, setError] = useState<string | null>(null);  // Estado de erro
+    const [ferramentas, setFerramentas] = useState<Ferramenta[]>([]);  
+    const [loading, setLoading] = useState<boolean>(true);  
+    const [error, setError] = useState<string | null>(null);  
+    const navigate = useNavigate(); // Inicializa a navegação
 
     useEffect(() => {
-        // Função para buscar as ferramentas ao carregar a página
         const fetchData = async () => {
             try {
-                const data = await getAllFerramentas(); // Chama a função que pega os dados
-                setFerramentas(data); // Atualiza o estado com as ferramentas
+                const data = await getAllFerramentas();
+                setFerramentas(data);
             } catch (err) {
-                setError('Erro ao carregar as ferramentas'); // Atualiza o estado de erro
+                setError("Erro ao carregar as ferramentas");
             } finally {
-                setLoading(false); // Define que o carregamento foi concluído
+                setLoading(false);
             }
         };
 
         fetchData();
-    }, []); // A dependência vazia garante que a chamada só será feita uma vez
+    }, []);
 
     return (
         <div>
             <h2>Ferramentas</h2>
+
+            {/* Botão para cadastrar nova ferramenta */}
+            <button onClick={() => navigate("/ferramentas/cadastrar")}>
+                Cadastrar Ferramenta
+            </button>
+
             {loading ? (
-                <p>Carregando...</p> // Exibe enquanto os dados estão sendo carregados
+                <p>Carregando...</p>
             ) : error ? (
-                <p>{error}</p> // Exibe mensagem de erro caso algo tenha dado errado
+                <p>{error}</p>
             ) : ferramentas.length > 0 ? (
                 <ul>
                     {ferramentas.map((ferramenta) => (
                         <li key={ferramenta.id}>
                             <h4>{ferramenta.nome}</h4>
                             <p>{ferramenta.descricao}</p>
-                            {ferramenta.processo ? (
+                            {ferramenta.processo && (
                                 <p><strong>Processo:</strong> {ferramenta.processo?.nome}</p>
-                            ) : null}
-                            {ferramenta.subProcesso ? (
+                            )}
+                            {ferramenta.subProcesso && (
                                 <p><strong>Subprocesso:</strong> {ferramenta.subProcesso?.nome}</p>
-                            ) : null}
+                            )}
                         </li>
                     ))}
                 </ul>
             ) : (
-                <p>Nenhuma ferramenta encontrada.</p> // Exibe caso não haja ferramentas
+                <p>Nenhuma ferramenta encontrada.</p>
             )}
         </div>
     );

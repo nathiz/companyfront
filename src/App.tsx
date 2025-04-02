@@ -11,6 +11,7 @@ import Documentos from "./pages/Documentos";
 import Responsaveis from "./pages/Responsaveis";
 import CadastroProcesso from "./pages/CadastrarProcesso";
 import CadastrarSubProcesso from "pages/CadastrarSubProcesso";
+import CadastrarFerramenta from "pages/CadastrarFerramenta";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               <Route path="/subprocessos" element={<SubProcess />} />
               <Route path="/cadastro-subprocesso" element={<CadastrarSubProcesso />} />
               <Route path="/ferramentas" element={<Ferramentas />} />
+              <Route path="/ferramentas/cadastrar" element={<CadastrarFerramenta />} />
               <Route path="/documentos" element={<Documentos />} />
               <Route path="/responsaveis" element={<Responsaveis />} />
             </Routes>

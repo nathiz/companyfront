@@ -7,7 +7,7 @@ import { Process } from "../models/Process";
 const CadastrarSubProcesso: React.FC = () => {
     const navigate = useNavigate();
     const [nome, setNome] = useState("");
-    const [processId, setProcessId] = useState<number | null>(null);
+    const [processoId, setProcessoId] = useState<number | null>(null);
     const [processos, setProcessos] = useState<Process[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
@@ -28,14 +28,14 @@ const CadastrarSubProcesso: React.FC = () => {
         e.preventDefault();
         setError(null);
     
-        if (!nome || processId === null) { // Removida a comparação com "" ✅
+        if (!nome || processoId === null) { // Removida a comparação com "" ✅
             setError("Preencha todos os campos corretamente.");
             return;
         }
     
         const subProcessData = {
             nome,
-            processId, // Já garantimos que processId é um número
+            processoId, // Já garantimos que processId é um número
         };
     
         console.log("Enviando dados:", subProcessData); // 🔍 Debug
@@ -63,8 +63,8 @@ const CadastrarSubProcesso: React.FC = () => {
                 <div>
                     <label>Processo:</label>
                     <select
-                        value={processId ?? ""}
-                        onChange={(e) => setProcessId(e.target.value === "" ? null : Number(e.target.value))}
+                        value={processoId ?? ""}
+                        onChange={(e) => setProcessoId(e.target.value === "" ? null : Number(e.target.value))}
                     >
                         <option value="">Selecione um processo</option>
                         {processos.map((processo) => (
