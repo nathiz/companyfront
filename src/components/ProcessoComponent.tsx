@@ -1,35 +1,30 @@
-import React from 'react'; // Importa a biblioteca React
-import { Process } from '../models/Process'; // Importa o modelo de dados Process
+import React from 'react';
+import { Process } from '../models/Process';
 
-// Define as propriedades do componente ProcessoComponent
 interface ProcessoProps {
-    processo: Process; // O componente recebe um objeto do tipo Process
+    processo: Process;
 }
 
-// Componente funcional para exibir as informações de um processo e seus subprocessos
 const ProcessoComponent: React.FC<ProcessoProps> = ({ processo }) => {
     return (
-        <div>
-            {/* Exibe o nome do processo */}
+        <div style={{ border: '1px solid #ddd', padding: '10px', marginBottom: '10px', borderRadius: '5px' }}>
             <h3>{processo.nome}</h3>
-            {/* Exibe a descrição do processo */}
-            <p>{processo.descricao}</p>
-            {/* Exibe a lista de subprocessos associados ao processo */}
-            <h4>Subprocessos</h4>
-            {/* Mapeia e exibe os subprocessos, caso existam */}
-            <h4>Subprocessos</h4>
+            <p><strong>Descrição:</strong> {processo.descricao}</p>
+            
             {processo.subprocessos && processo.subprocessos.length > 0 ? (
-                processo.subprocessos.map((sub) => (
-                    <div key={sub.id} className="border p-2 my-2 rounded">
-                        {/* Exibe o nome de cada subprocesso */}
-                        <p>{sub.nome}</p>
-                    </div>
-                ))
+                <div>
+                    <h4>Subprocessos:</h4>
+                    <ul>
+                        {processo.subprocessos.map((sub) => (
+                            <li key={sub.id}>{sub.nome}</li>
+                        ))}
+                    </ul>
+                </div>
             ) : (
-                <p className="text-muted">Nenhum subprocesso cadastrado.</p>
+                <p><em>Sem subprocessos cadastrados.</em></p>
             )}
         </div>
     );
 };
 
-export default ProcessoComponent; // Exporta o componente para ser utilizado em outras partes do projeto
+export default ProcessoComponent;

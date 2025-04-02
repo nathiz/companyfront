@@ -1,11 +1,17 @@
 import axios from "axios";
 import { Ferramenta } from "../models/Ferramenta";
 
-const API_URL = "http://localhost:5248/api/Ferramenta";
+const API_URL = "http://localhost:5248/api/Ferramentas";
 
 export const getAllFerramentas = async (): Promise<Ferramenta[]> => {
-    const response = await axios.get(API_URL);
-    return response.data;
+    try {
+        const response = await axios.get(API_URL);
+        console.log(response.data);  // Verifique o que está sendo retornado pela API
+        return response.data;
+    } catch (error) {
+        console.error("Erro ao carregar as ferramentas:", error);  // Exibe detalhes do erro no console
+        throw error;  // Re-lança o erro para que o componente trate
+    }
 };
 
 export const getFerramentaById = async (id: number): Promise<Ferramenta> => {

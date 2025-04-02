@@ -9,27 +9,37 @@ const Sidebar: React.FC = () => {
                 <ul className="space-y-2">
                     <li>
                         <Link to="/" className="block p-2 hover:bg-gray-700 rounded">
-                        Dashboard
+                            Dashboard
                         </Link>
                     </li>
                     <li>
                         <Link to="/areas" className="block p-2 hover:bg-gray-700 rounded">
-                        Áreas
+                            Áreas
                         </Link>
                     </li>
                     <li>
                         <Link to="/processos" className="block p-2 hover:bg-gray-700 rounded">
-                        Processos
+                            Processos
                         </Link>
                     </li>
                     <li>
-                        <Link to="/ferramentas" className="block p-2 hover:bg-gray-700 rounded">
-                        Ferramentas
+                        <Link to="/subprocessos" className="block p-2 hover:bg-gray-700 rounded">
+                            SubProcessos
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/ferramentas" className="block p-2 hover:bg-gray-700 rounded"> {/* Link para Ferramentas */}
+                            Ferramentas
                         </Link>
                     </li>
                     <li>
                         <Link to="/documentos" className="block p-2 hover:bg-gray-700 rounded">
-                        Documentos
+                            Documentos
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/responsaveis" className="block p-2 hover:bg-gray-700 rounded">
+                            Responsáveis
                         </Link>
                     </li>
                 </ul>

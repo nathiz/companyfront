@@ -4,7 +4,7 @@ import { Process } from "./Process";
 import { Responsavel } from "./Responsavel";
 
 export interface SubProcess {
-    id: number;
+    id?: number; // Torna o id opcional
     nome: string;
     processId: number;
     processo?: Process;

@@ -16,7 +16,7 @@ const SubProcessoComponent: React.FC<SubProcessoProps> = ({ subprocesso }) => {
             {/* Exibe o nome do subprocesso */}
             <h3>{subprocesso.nome}</h3>
             {/* Exibe o nome do processo associado ao subprocesso, verificando se o processo existe */}
-            <p><strong>Processo:</strong> {subprocesso.processo?.nome}</p>
+            <p><strong>Processo:</strong> {subprocesso.processo?.nome || "Não associado"}</p>
             {/* Exibe os subprocessos filhos, se houver */}
             {subprocesso.subprocessosFilhos?.length ? (
                 <>
